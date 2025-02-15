@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <View className="flex-1 justify-center items-center gap-4">
       <Text>Welcome to our react native project!</Text>
-      <Button title="Get Started" onPress={() => { }} />
+      <Button title="Get Started" onPress={() => {}} />
     </View>
   );
 }
