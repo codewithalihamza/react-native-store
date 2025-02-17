@@ -7,7 +7,7 @@ export default function Index() {
   const router = useRouter();
   const onClick = () => {
     console.log("first");
-    router.push("/(auth)/login");
+    router.push("/login");
   };
   return (
     <View className="flex-1 justify-center items-center gap-4">
