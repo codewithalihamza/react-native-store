@@ -1,14 +1,11 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-
-export default function LoginScreen() {
+export default function SignupScreen() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const onClickSignUp = () => {
-    router.push("/login");
-  };
+
   return (
     <View
       style={{
@@ -19,7 +16,7 @@ export default function LoginScreen() {
       }}
     >
       <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 20 }}>
-        Login
+        Sign Up
       </Text>
       <TextInput
         style={{
@@ -48,20 +45,20 @@ export default function LoginScreen() {
         secureTextEntry
       />
       <TouchableOpacity
-        onPress={() => console.log("Login Pressed")}
+        onPress={() => console.log("Signup Pressed")}
         style={{
-          backgroundColor: "#007bff",
+          backgroundColor: "#28a745",
           padding: 12,
           borderRadius: 8,
           marginBottom: 10,
         }}
       >
         <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>
-          Login
+          Sign Up
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={onClickSignUp}>
-        <Text style={{ color: "#007bff" }}>Don't have an account? Sign up</Text>
+      <TouchableOpacity onPress={() => router.push("/login")}>
+        <Text style={{ color: "#007bff" }}>Already have an account? Login</Text>
       </TouchableOpacity>
     </View>
   );
