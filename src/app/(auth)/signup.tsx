@@ -1,6 +1,12 @@
 import { useRouter } from "expo-router";
 import { useFormik } from "formik";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import * as Yup from "yup";
 
 const styles = StyleSheet.create({
@@ -85,12 +91,16 @@ export default function SignupScreen() {
         onBlur={formik.handleBlur("email")}
         keyboardType="email-address"
       />
-      {formik.errors.email && formik.touched.email && <Text style={styles.errorText}>{formik.errors.email}</Text>}
+      {formik.errors.email && formik.touched.email && (
+        <Text style={styles.errorText}>{formik.errors.email}</Text>
+      )}
 
       <TextInput
         style={[
           styles.input,
-          formik.errors.password && formik.touched.password ? styles.inputError : {},
+          formik.errors.password && formik.touched.password
+            ? styles.inputError
+            : {},
         ]}
         placeholder="Password"
         value={formik.values.password}
@@ -98,12 +108,16 @@ export default function SignupScreen() {
         onBlur={formik.handleBlur("password")}
         secureTextEntry
       />
-      {formik.errors.password && formik.touched.password && <Text style={styles.errorText}>{formik.errors.password}</Text>}
+      {formik.errors.password && formik.touched.password && (
+        <Text style={styles.errorText}>{formik.errors.password}</Text>
+      )}
 
       <TextInput
         style={[
           styles.input,
-          formik.errors.confirmPassword && formik.touched.confirmPassword ? styles.inputError : {},
+          formik.errors.confirmPassword && formik.touched.confirmPassword
+            ? styles.inputError
+            : {},
         ]}
         placeholder="Confirm Password"
         value={formik.values.confirmPassword}
@@ -115,7 +129,10 @@ export default function SignupScreen() {
         <Text style={styles.errorText}>{formik.errors.confirmPassword}</Text>
       )}
 
-      <TouchableOpacity onPress={() => formik.handleSubmit()} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => formik.handleSubmit()}
+        style={styles.button}
+      >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
@@ -125,5 +142,3 @@ export default function SignupScreen() {
     </View>
   );
 }
-
-
