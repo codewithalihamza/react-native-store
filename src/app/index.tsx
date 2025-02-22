@@ -1,18 +1,18 @@
-import { Button } from "@/components/button";
+import { RootState } from "@/redux/store";
 import { useRouter } from "expo-router";
-import { Text, View } from "react-native";
-import "~/global.css";
+import { Button, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
-export default function Index() {
+export default function HomeScreen() {
+  const user = useSelector((state: RootState) => state.user.user);
   const router = useRouter();
   const onClick = () => {
-    console.log("first");
     router.push("/login");
   };
   return (
-    <View className="flex-1 justify-center items-center gap-4">
-      <Text>Welcome to our react native project!</Text>
-      <Button title="Get Started" onPress={onClick} />
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Welcome to Store, {user?.email || "Guest"}!</Text>
+      {!user?.email && <Button title="Get Started" onPress={onClick} />}{" "}
     </View>
   );
 }
