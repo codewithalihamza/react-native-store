@@ -72,7 +72,7 @@ export default function SignupScreen() {
     initialValues: { email: "", password: "", confirmPassword: "" },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      router.push('/login')
+      router.push("/login");
     },
   });
 
