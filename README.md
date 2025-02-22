@@ -1,6 +1,6 @@
-# React Native Boilerplate 👋
+# React Native Store 👋
 
-This is a React Native boilerplate created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app), using [Expo](https://expo.dev) and [React Native](https://reactnative.dev), with [Typescript](https://www.typescriptlang.org/), [Yarn](https://yarnpkg.com/), [Nativewind](https://www.nativewind.dev/), [Prettier](https://prettier.io/), [ESLint](https://eslint.org/).
+This is a React Native store created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app), using [Expo](https://expo.dev) and [React Native](https://reactnative.dev), with [Typescript](https://www.typescriptlang.org/), [Yarn](https://yarnpkg.com/), [Nativewind](https://www.nativewind.dev/), [Prettier](https://prettier.io/), [ESLint](https://eslint.org/).
 
 ## Get started
 
