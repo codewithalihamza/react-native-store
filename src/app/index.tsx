@@ -6,7 +6,6 @@ import "~/global.css";
 export default function Index() {
   const router = useRouter();
   const onClick = () => {
-    console.log("first");
     router.push("/login");
   };
   return (

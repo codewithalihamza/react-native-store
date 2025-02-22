@@ -69,7 +69,7 @@ export default function LoginScreen() {
     initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      console.log("Login Pressed", values);
+      router.push('/')
     },
   });
 
