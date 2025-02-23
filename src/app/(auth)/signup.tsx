@@ -1,3 +1,5 @@
+import { AppDispatch } from "@/redux/store";
+import { signUpUser } from "@/redux/user-slice";
 import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import {
@@ -7,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 const styles = StyleSheet.create({
@@ -56,6 +59,7 @@ const styles = StyleSheet.create({
 
 export default function SignupScreen() {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -68,11 +72,11 @@ export default function SignupScreen() {
   });
 
   const formik = useFormik({
-    enableReinitialize: true,
     initialValues: { email: "", password: "", confirmPassword: "" },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      console.log("Signup Pressed", values);
+      dispatch(signUpUser({ email: values.email, password: values.password }));
+      router.push("/login");
     },
   });
 
@@ -81,56 +85,39 @@ export default function SignupScreen() {
       <Text style={styles.title}>Sign Up</Text>
 
       <TextInput
-        style={[
-          styles.input,
-          formik.errors.email && formik.touched.email ? styles.inputError : {},
-        ]}
+        style={styles.input}
         placeholder="Email"
         value={formik.values.email}
         onChangeText={formik.handleChange("email")}
-        onBlur={formik.handleBlur("email")}
-        keyboardType="email-address"
       />
-      {formik.errors.email && formik.touched.email && (
+      {formik.errors.email && (
         <Text style={styles.errorText}>{formik.errors.email}</Text>
       )}
 
       <TextInput
-        style={[
-          styles.input,
-          formik.errors.password && formik.touched.password
-            ? styles.inputError
-            : {},
-        ]}
+        style={styles.input}
         placeholder="Password"
         value={formik.values.password}
         onChangeText={formik.handleChange("password")}
-        onBlur={formik.handleBlur("password")}
         secureTextEntry
       />
-      {formik.errors.password && formik.touched.password && (
+      {formik.errors.password && (
         <Text style={styles.errorText}>{formik.errors.password}</Text>
       )}
 
       <TextInput
-        style={[
-          styles.input,
-          formik.errors.confirmPassword && formik.touched.confirmPassword
-            ? styles.inputError
-            : {},
-        ]}
+        style={styles.input}
         placeholder="Confirm Password"
         value={formik.values.confirmPassword}
         onChangeText={formik.handleChange("confirmPassword")}
-        onBlur={formik.handleBlur("confirmPassword")}
         secureTextEntry
       />
-      {formik.errors.confirmPassword && formik.touched.confirmPassword && (
+      {formik.errors.confirmPassword && (
         <Text style={styles.errorText}>{formik.errors.confirmPassword}</Text>
       )}
 
       <TouchableOpacity
-        onPress={() => formik.handleSubmit()}
+        onPress={() => formik.handleSubmit}
         style={styles.button}
       >
         <Text style={styles.buttonText}>Sign Up</Text>
