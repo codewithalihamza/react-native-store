@@ -1,4 +1,5 @@
 import { AppDispatch } from "@/redux/store";
+import { signUpUser } from "@/redux/user-slice";
 import { useRouter } from "expo-router";
 import { useFormik } from "formik";
 import {
@@ -73,10 +74,9 @@ export default function SignupScreen() {
   const formik = useFormik({
     initialValues: { email: "", password: "", confirmPassword: "" },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log("first");
-      // dispatch(signUpUser({ email: values.email, password: values.password }));
-      // router.push("/login");
+    onSubmit: async (values) => {
+      dispatch(signUpUser({ email: values.email, password: values.password }));
+      router.push("/login");
     },
   });
 

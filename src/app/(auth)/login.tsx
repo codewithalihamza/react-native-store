@@ -75,7 +75,7 @@ export default function LoginScreen() {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log("first");
       dispatch(loginUser(values));
       if (
