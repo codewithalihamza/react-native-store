@@ -1,4 +1,3 @@
-
 import { signupValidationSchema } from "@/schema/signup-schema";
 import { useRouter } from "expo-router";
 import { useFormik } from "formik";
